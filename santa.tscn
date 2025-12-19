@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtldr7rmg4jvc"]
+
+[ext_resource type="Texture2D" uid="uid://dbj6ael2nudxv" path="res://assets/sprites/santa.png" id="1_2wumw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hfj6"]
+size = Vector2(55, 65)
+
+[node name="Santa" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -39.999992)
+scale = Vector2(5, 5)
+texture = ExtResource("1_2wumw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -32.5)
+shape = SubResource("RectangleShape2D_3hfj6")
