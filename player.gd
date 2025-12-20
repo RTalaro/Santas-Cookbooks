@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
 
-@export var speed = 300
-@export var gravity = 20
-@export var jump_force = 300
+@export var speed = 500
+@export var gravity = 40
+@export var jump_force = 500
 
 @onready var sprite = $Sprite2D
+
+var origin: Vector2
+
+func _ready():
+	origin = global_position
 
 func _physics_process(_delta):
 	if !is_on_floor() and velocity.y < 500:

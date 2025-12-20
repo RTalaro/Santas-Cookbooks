@@ -2,7 +2,7 @@ extends Control
 
 
 @onready var player = $Player
-@onready var camera = $Player/Camera2D
+@onready var camera = $Camera2D
 
 func _ready():
 	player.set_physics_process(false)
@@ -15,14 +15,10 @@ func run_dialogue():
 	# fade out textbox
 	player.set_physics_process(true)
 
+func reset_game():
+	player.global_position = player.origin
 
 func _process(_delta):
-	var camera_pos = camera.get_target_position()
-	if camera_pos.x < 576:
-		camera.position.x = 395
-		camera.enabled = false
-	if player.position.x > 0:
-		print("enable camera")
-		camera.position.x = 0
-		camera.position.y = -31
-		camera.enabled = true
+	camera.position.x = player.position.x
+	if player.global_position.y > 700:
+		reset_game()

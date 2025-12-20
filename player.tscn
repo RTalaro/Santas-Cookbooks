@@ -19,5 +19,3 @@ flip_h = true
 position = Vector2(-1.5000014, -23)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_onrkg")
-
-[node name="Camera2D" type="Camera2D" parent="."]
