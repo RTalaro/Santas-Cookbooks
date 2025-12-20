@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckhfbngn5xpkk"]
+[gd_scene load_steps=3 format=3 uid="uid://ckhfbngn5xpkk"]
 
-[ext_resource type="Texture2D" uid="uid://c5e0bodn00fwm" path="res://assets/Dungeon_brick_wall_grey.png" id="1_y7k74"]
+[ext_resource type="Script" uid="uid://bww2opev4kyvj" path="res://title.gd" id="1_oyqm6"]
+[ext_resource type="Texture2D" uid="uid://bb3rnebq7f5fn" path="res://assets/Dungeon_brick_wall_blue.png.png" id="2_oyqm6"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oyqm6")
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -17,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_y7k74")
+texture = ExtResource("2_oyqm6")
 expand_mode = 3
 stretch_mode = 5
 
@@ -43,18 +45,18 @@ theme_override_font_sizes/font_size = 60
 text = "Santa's Cookbooks"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="VBoxContainer2/VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer2/Buttons"]
 layout_mode = 2
 text = "Play"
 
-[node name="Button3" type="Button" parent="VBoxContainer2/VBoxContainer"]
+[node name="Options" type="Button" parent="VBoxContainer2/Buttons"]
 layout_mode = 2
 text = "Options"
 
-[node name="Button2" type="Button" parent="VBoxContainer2/VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer2/Buttons"]
 layout_mode = 2
 text = "Quit"
