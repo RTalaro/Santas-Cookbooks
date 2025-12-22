@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8c7ehpfbmj7q"]
+
+[ext_resource type="PackedScene" uid="uid://dheyjx13mv6t6" path="res://volume.tscn" id="1_lti8b"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 111.0
+offset_top = 123.0
+offset_right = -111.0
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="General" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="General"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Options" type="Button" parent="General"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="General"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Title" type="Button" parent="General"]
+layout_mode = 2
+text = "Return to Title"
+
+[node name="Volume" parent="." instance=ExtResource("1_lti8b")]
+layout_mode = 0

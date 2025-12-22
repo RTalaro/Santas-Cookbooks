@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dheyjx13mv6t6"]
+
+[node name="Volume" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sliders" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Master" type="HSlider" parent="Sliders"]
+layout_mode = 2
+
+[node name="Music" type="HSlider" parent="Sliders"]
+layout_mode = 2
+
+[node name="SFX" type="HSlider" parent="Sliders"]
+layout_mode = 2
+
+[node name="Labels" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Master" type="Label" parent="Labels"]
+layout_mode = 2
+text = "Master"
+
+[node name="Music" type="Label" parent="Labels"]
+layout_mode = 2
+text = "Music"
+
+[node name="SFX" type="Label" parent="Labels"]
+layout_mode = 2
+text = "SFX"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_top = 255.0
+offset_right = 930.0
+offset_bottom = 286.0
+text = "Back"

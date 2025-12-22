@@ -11,9 +11,11 @@ extends Control
 @onready var camera = $Camera2D
 @onready var window = $Window
 
-@export var last_checkpoint = 0
-@export var num_cookbooks = 0
-@export var all_cookbooks = [false, false, false, false, false, false, false]
+@export var cookbooks_held: int = 0
+@export var max_checkpoints: int
+@export var max_cookbooks: int
+@export var all_checkpoints: Array[Node]
+@export var all_cookbooks: Array[Node]
 
 signal proceed_text
 signal cookbook_collected
@@ -21,12 +23,30 @@ signal quest_complete
 
 func _ready():
 	player.set_physics_process(false)
-	counter.text = "Find Santa's Cookbooks! %d/7" % num_cookbooks
+	all_checkpoints = extract_children("Checkpoint")
+	max_checkpoints = len(all_checkpoints)
+	all_cookbooks = extract_children("Cookbook")
+	max_cookbooks = len(all_cookbooks)
+	
+	counter.text = "Find Santa's Cookbooks! %d/%d" % [cookbooks_held, max_cookbooks]
 	text.text = ""
+	
 	await run_dialogue("start")
 	player.set_physics_process(true)
 	cookbook_collected.connect(on_cookbook_collected)
 	quest_complete.connect(end_game)
+
+func extract_children(node_name: String):
+	var children: Array[Node] = get_children()
+	children = children.filter(
+		func(node):
+			if node.name.contains(node_name): return true
+	)
+	var num = 1
+	for child in children:
+		child.num = num
+		num += 1
+	return children
 
 func run_dialogue(file_name: String):
 	var dialogue_path = "res://dialogue/%s.txt" % file_name
@@ -49,22 +69,23 @@ func run_dialogue(file_name: String):
 	animation_player.play("santa_fade_out")
 	await animation_player.animation_finished
 
-func jump_to_checkpoint(checkpoint_num: int):
-	print("jump to checkpoint ", checkpoint_num)
+func get_nearest_checkpoint():
+	for checkpoint in all_checkpoints:
+		if checkpoint.global_position.x > player.global_position.x: continue
+		else: return checkpoint.num
 
-func reset_game():
-	# TO-DO: reset player position to closest checkpoint behind
-	player.global_position = player.origin
+func jump_to_checkpoint(num: int = -1):
+	if num <= 0: jump_to_checkpoint(get_nearest_checkpoint())
+	elif all_checkpoints[num-1].reached:
+		player.global_position = all_checkpoints[num-1].global_position
 
 func on_cookbook_collected(book_num: int):
-	num_cookbooks += 1
-	counter.text = "Find Santa's Cookbooks! %d/7" % num_cookbooks
-	all_cookbooks[book_num - 1] = true
+	cookbooks_held += 1
+	counter.text = "Find Santa's Cookbooks! %d/%d" % [cookbooks_held, max_cookbooks]
 	var child_name = "Cookbook%d" % book_num
 	var child_node = get_node(child_name)
 	call_deferred("remove_child", child_node)
-	print(all_cookbooks)
-	if all_cookbooks.find(false) < 0:
+	if cookbooks_held >= max_cookbooks:
 		counter.text = "Return to Santa's Window!"
 
 func end_game():
@@ -79,4 +100,4 @@ func _process(_delta):
 	
 	camera.position.x = player.position.x
 	if player.global_position.y > 700:
-		reset_game()
+		jump_to_checkpoint()
