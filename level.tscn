@@ -1,34 +1,19 @@
-[gd_scene load_steps=14 format=4 uid="uid://xexpemkr220t"]
+[gd_scene load_steps=16 format=4 uid="uid://xexpemkr220t"]
 
 [ext_resource type="Script" uid="uid://ccrn8feitikwa" path="res://level.gd" id="1_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://5hyshhab5evf" path="res://assets/tilemaps/environment.png" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://bfpbd8x7waxhb" path="res://assets/sprites/santahat.png" id="2_1ainy"]
 [ext_resource type="PackedScene" uid="uid://bwvsptr2ewpx7" path="res://player.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://dtldr7rmg4jvc" path="res://santa.tscn" id="3_oi3di"]
-[ext_resource type="PackedScene" uid="uid://dnn6edjtht0cw" path="res://book.tscn" id="5_f2txt"]
-
-[sub_resource type="Animation" id="Animation_1ainy"]
-resource_name = "santa_hat_bounce"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Textbox/InnerRect/Text/SantaHat:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.53333336),
-"transitions": PackedFloat32Array(0.4829681, 1.464086),
-"update": 0,
-"values": [Vector2(1039, 97.146965), Vector2(1039, 86)]
-}
+[ext_resource type="PackedScene" uid="uid://dnn6edjtht0cw" path="res://cookbook.tscn" id="5_f2txt"]
+[ext_resource type="Script" uid="uid://de5ug8i7r5l1w" path="res://window.gd" id="7_n6hdu"]
 
 [sub_resource type="Animation" id="Animation_n6hdu"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Textbox/InnerRect/Text/SantaHat:position")
+tracks/0/path = NodePath("GUI/Textbox/InnerRect/Text/SantaHat:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,7 +53,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Textbox:modulate")
+tracks/1/path = NodePath("GUI/Textbox:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -78,16 +63,45 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_i2t4f"]
-resource_name = "textbox_fade_in"
+[sub_resource type="Animation" id="Animation_1ainy"]
+resource_name = "santa_hat_bounce"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Textbox:modulate")
+tracks/0/path = NodePath("GUI/Textbox/InnerRect/Text/SantaHat:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.099999994, 0.8),
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(0.4829681, 1.464086),
+"update": 0,
+"values": [Vector2(1039, 97.146965), Vector2(1039, 86)]
+}
+
+[sub_resource type="Animation" id="Animation_i2t4f"]
+resource_name = "santa_fade_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Santa:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GUI/Textbox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -96,9 +110,9 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_km5ld"]
 _data = {
 &"RESET": SubResource("Animation_n6hdu"),
+&"santa_fade_in": SubResource("Animation_i2t4f"),
 &"santa_fade_out": SubResource("Animation_km5ld"),
-&"santa_hat_bounce": SubResource("Animation_1ainy"),
-&"textbox_fade_in": SubResource("Animation_i2t4f")
+&"santa_hat_bounce": SubResource("Animation_1ainy")
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
@@ -899,6 +913,9 @@ texture = ExtResource("1_u52ul")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vonw3")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ainy"]
+size = Vector2(393.5, 85)
+
 [node name="Level" type="Control"]
 layout_mode = 3
 anchors_preset = 8
@@ -918,9 +935,9 @@ libraries = {
 }
 autoplay = "santa_hat_bounce"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Counter" type="Label" parent="GUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -931,10 +948,10 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
-text = "Cookbooks Collected: 0/7"
+text = "Find Santa's Cookbooks! 0/7"
 autowrap_trim_flags = 0
 
-[node name="Textbox" type="Control" parent="CanvasLayer"]
+[node name="Textbox" type="Control" parent="GUI"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -943,14 +960,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BorderRect" type="ColorRect" parent="CanvasLayer/Textbox"]
+[node name="BorderRect" type="ColorRect" parent="GUI/Textbox"]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 471.0
 offset_right = 1132.0
 offset_bottom = 630.0
 
-[node name="InnerRect" type="ColorRect" parent="CanvasLayer/Textbox"]
+[node name="InnerRect" type="ColorRect" parent="GUI/Textbox"]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 479.85303
@@ -958,7 +975,7 @@ offset_right = 1124.0
 offset_bottom = 620.0
 color = Color(0.50980395, 0.11372549, 0.23529412, 1)
 
-[node name="Text" type="RichTextLabel" parent="CanvasLayer/Textbox/InnerRect"]
+[node name="Text" type="RichTextLabel" parent="GUI/Textbox/InnerRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -972,7 +989,7 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 30
 text = "Santa: Text"
 
-[node name="SantaHat" type="Sprite2D" parent="CanvasLayer/Textbox/InnerRect/Text"]
+[node name="SantaHat" type="Sprite2D" parent="GUI/Textbox/InnerRect/Text"]
 position = Vector2(1039, 97.146965)
 scale = Vector2(4, 4)
 texture = ExtResource("2_1ainy")
@@ -993,13 +1010,40 @@ tile_map_data = PackedByteArray("AADu/wMAAAABAAIAAADv/wMAAAABAAIAAADw/wMAAAABAAI
 tile_set = SubResource("TileSet_oi3di")
 metadata/_edit_lock_ = true
 
-[node name="Collectibles" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_oi3di")
-metadata/_edit_lock_ = true
-
-[node name="Book" parent="." instance=ExtResource("5_f2txt")]
+[node name="Cookbook1" parent="." instance=ExtResource("5_f2txt")]
 position = Vector2(1066, 204)
 scale = Vector2(3, 3)
+book_num = 1
+
+[node name="Cookbook2" parent="." instance=ExtResource("5_f2txt")]
+position = Vector2(1066, 204)
+scale = Vector2(3, 3)
+book_num = 2
+
+[node name="Cookbook3" parent="." instance=ExtResource("5_f2txt")]
+position = Vector2(1066, 204)
+scale = Vector2(3, 3)
+book_num = 3
+
+[node name="Cookbook4" parent="." instance=ExtResource("5_f2txt")]
+position = Vector2(1066, 204)
+scale = Vector2(3, 3)
+book_num = 4
+
+[node name="Cookbook5" parent="." instance=ExtResource("5_f2txt")]
+position = Vector2(1066, 204)
+scale = Vector2(3, 3)
+book_num = 5
+
+[node name="Cookbook6" parent="." instance=ExtResource("5_f2txt")]
+position = Vector2(1066, 204)
+scale = Vector2(3, 3)
+book_num = 6
+
+[node name="Cookbook7" parent="." instance=ExtResource("5_f2txt")]
+position = Vector2(1066, 204)
+scale = Vector2(3, 3)
+book_num = 7
 
 [node name="Player" parent="." instance=ExtResource("2_vonw3")]
 position = Vector2(-327, 95)
@@ -1016,3 +1060,10 @@ limit_bottom = 648
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
+
+[node name="Window" type="Area2D" parent="."]
+script = ExtResource("7_n6hdu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window"]
+position = Vector2(-324.75, 53)
+shape = SubResource("RectangleShape2D_1ainy")

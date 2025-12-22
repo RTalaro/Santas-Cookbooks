@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnn6edjtht0cw"]
+[gd_scene load_steps=4 format=3 uid="uid://dnn6edjtht0cw"]
 
 [ext_resource type="Texture2D" uid="uid://cq7yxmgqt4q41" path="res://assets/sprites/book.png" id="1_kh36y"]
+[ext_resource type="Script" uid="uid://cuh60a6g5ccy2" path="res://cookbook.gd" id="1_y0hms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0hms"]
 size = Vector2(4, 12.57967)
 
-[node name="Book" type="Area2D"]
+[node name="Cookbook" type="Area2D"]
+script = ExtResource("1_y0hms")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kh36y")
