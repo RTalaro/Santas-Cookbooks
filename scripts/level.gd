@@ -70,14 +70,18 @@ func run_dialogue(file_name: String):
 	await animation_player.animation_finished
 
 func get_nearest_checkpoint():
-	for checkpoint in all_checkpoints:
+	var checkpoints_reversed = all_checkpoints.duplicate()
+	checkpoints_reversed.reverse()
+	for checkpoint in checkpoints_reversed:
 		if checkpoint.global_position.x > player.global_position.x: continue
-		else: return checkpoint.num
+		else:
+			return checkpoint.num
 
 func jump_to_checkpoint(num: int = -1):
 	if num <= 0: jump_to_checkpoint(get_nearest_checkpoint())
 	elif all_checkpoints[num-1].reached:
 		player.global_position = all_checkpoints[num-1].global_position
+	else: jump_to_checkpoint(num-1)
 
 func on_cookbook_collected(book_num: int):
 	cookbooks_held += 1
