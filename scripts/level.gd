@@ -31,7 +31,8 @@ func _ready():
 	counter.text = "Find Santa's Cookbooks! %d/%d" % [cookbooks_held, max_cookbooks]
 	text.text = ""
 	
-	await run_dialogue("start")
+	# TO-DO: uncomment when game is done
+	#await run_dialogue("start")
 	player.set_physics_process(true)
 	cookbook_collected.connect(on_cookbook_collected)
 	quest_complete.connect(end_game)
