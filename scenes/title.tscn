@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckhfbngn5xpkk"]
 
-[ext_resource type="Script" uid="uid://bww2opev4kyvj" path="res://title.gd" id="1_oyqm6"]
+[ext_resource type="Script" uid="uid://bww2opev4kyvj" path="res://scripts/title.gd" id="1_oyqm6"]
 [ext_resource type="Texture2D" uid="uid://bb3rnebq7f5fn" path="res://assets/Dungeon_brick_wall_blue.png.png" id="2_oyqm6"]
 
 [node name="Title" type="Control"]

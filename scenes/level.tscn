@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=4 uid="uid://xexpemkr220t"]
 
-[ext_resource type="Script" uid="uid://ccrn8feitikwa" path="res://level.gd" id="1_0b4ue"]
+[ext_resource type="Script" uid="uid://ccrn8feitikwa" path="res://scripts/level.gd" id="1_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://5hyshhab5evf" path="res://assets/tilemaps/environment.png" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://bfpbd8x7waxhb" path="res://assets/sprites/santahat.png" id="2_1ainy"]
-[ext_resource type="PackedScene" uid="uid://bwvsptr2ewpx7" path="res://player.tscn" id="2_vonw3"]
-[ext_resource type="PackedScene" uid="uid://dtldr7rmg4jvc" path="res://santa.tscn" id="3_oi3di"]
-[ext_resource type="PackedScene" uid="uid://dnn6edjtht0cw" path="res://cookbook.tscn" id="5_f2txt"]
-[ext_resource type="Script" uid="uid://de5ug8i7r5l1w" path="res://window.gd" id="7_n6hdu"]
-[ext_resource type="PackedScene" uid="uid://cdmber1wga4th" path="res://checkpoint.tscn" id="8_i2t4f"]
+[ext_resource type="PackedScene" uid="uid://bwvsptr2ewpx7" path="res://scenes/player.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://dtldr7rmg4jvc" path="res://scenes/santa.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://dnn6edjtht0cw" path="res://scenes/cookbook.tscn" id="5_f2txt"]
+[ext_resource type="Script" uid="uid://de5ug8i7r5l1w" path="res://scripts/window.gd" id="7_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://cdmber1wga4th" path="res://scenes/checkpoint.tscn" id="8_i2t4f"]
 
 [sub_resource type="Animation" id="Animation_n6hdu"]
 length = 0.001
