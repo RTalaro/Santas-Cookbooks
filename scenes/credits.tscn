@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct8m6uch446pt"]
+
+[ext_resource type="Script" uid="uid://dstxtuj385p3p" path="res://scripts/button.gd" id="1_0bpdh"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_top = 148.0
+offset_right = -102.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0028136265, 0.074851945, 0.105586156, 0.7882353)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 89.0
+offset_top = 137.0
+offset_right = -89.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0028136265, 0.074851945, 0.105586156, 0.7882353)
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 526.0
+offset_top = 82.5
+offset_right = -526.0
+offset_bottom = 113.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Back"
+script = ExtResource("1_0bpdh")

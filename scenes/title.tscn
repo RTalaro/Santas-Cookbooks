@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckhfbngn5xpkk"]
+[gd_scene load_steps=6 format=3 uid="uid://ckhfbngn5xpkk"]
 
 [ext_resource type="Script" uid="uid://bww2opev4kyvj" path="res://scripts/title.gd" id="1_oyqm6"]
 [ext_resource type="Texture2D" uid="uid://bb3rnebq7f5fn" path="res://assets/Dungeon_brick_wall_blue.png.png" id="2_oyqm6"]
+[ext_resource type="Script" uid="uid://dstxtuj385p3p" path="res://scripts/button.gd" id="3_p6dhs"]
+[ext_resource type="PackedScene" uid="uid://dheyjx13mv6t6" path="res://scenes/volume.tscn" id="4_pyl7j"]
+[ext_resource type="PackedScene" uid="uid://ct8m6uch446pt" path="res://scenes/credits.tscn" id="5_b3w7a"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -23,40 +26,70 @@ texture = ExtResource("2_oyqm6")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+[node name="Menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -271.5
-offset_top = -94.0
-offset_right = 271.5
-offset_bottom = 94.0
+offset_left = 284.5
+offset_top = 184.5
+offset_right = 827.5
+offset_bottom = 267.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="VBoxContainer2"]
-layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 60
 text = "Santa's Cookbooks"
 horizontal_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="VBoxContainer2"]
-layout_mode = 2
+[node name="Buttons" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 319.5
+offset_right = 682.0
+offset_bottom = 509.5
 theme_override_constants/separation = 20
 
-[node name="Play" type="Button" parent="VBoxContainer2/Buttons"]
+[node name="Play" type="Button" parent="Menu/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Play"
+script = ExtResource("3_p6dhs")
 
-[node name="Options" type="Button" parent="VBoxContainer2/Buttons"]
+[node name="Options" type="Button" parent="Menu/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Options"
+script = ExtResource("3_p6dhs")
 
-[node name="Quit" type="Button" parent="VBoxContainer2/Buttons"]
+[node name="Quit" type="Button" parent="Menu/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Quit"
+script = ExtResource("3_p6dhs")
+
+[node name="Credits" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 587.0
+offset_right = 152.0
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 25
+text = "Credits
+"
+script = ExtResource("3_p6dhs")
+
+[node name="Volume" parent="." instance=ExtResource("4_pyl7j")]
+visible = false
+layout_mode = 1
+
+[node name="Credits" parent="." instance=ExtResource("5_b3w7a")]
+visible = false
+layout_mode = 1

@@ -17,7 +17,7 @@ func on_body_entered(body: Node2D):
 			reached = true
 			call_deferred("disconnect", "body_entered", on_body_entered)
 		else: print("no parent")
-	
+
 
 func _input(_event):
 	if reached and Input.is_action_just_pressed(str(num)):

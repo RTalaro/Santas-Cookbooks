@@ -23,7 +23,6 @@ shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="JumpSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qhqgy")
-volume_db = -8.078
 bus = &"SFX"
 
 [node name="CoyoteTimer" type="Timer" parent="."]

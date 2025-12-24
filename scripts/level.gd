@@ -6,6 +6,7 @@ extends Control
 @onready var counter = $GUI/Counter
 @onready var textbox = $GUI/Textbox
 @onready var text = $GUI/Textbox/InnerRect/Text
+@onready var volume = $GUI/Volume
 @onready var player = $Player
 @onready var santa = $Santa
 @onready var santa_sprite = $Santa/Sprite2D
@@ -34,8 +35,7 @@ func _ready():
 	text.text = ""
 	bgm.play(4)
 	
-	# TO-DO: uncomment when game is done
-	await run_dialogue("start")
+	#await run_dialogue("start")
 	player.set_physics_process(true)
 	cookbook_collected.connect(on_cookbook_collected)
 	quest_complete.connect(end_game)
@@ -108,5 +108,8 @@ func _process(_delta):
 	
 	camera.position.x = player.position.x
 	if player.global_position.y > 700:
-		#jump_to_checkpoint()
-		player.global_position = player.origin
+		jump_to_checkpoint()
+
+func _input(_event):
+	if Input.is_action_just_pressed("options"):
+		volume.visible = !volume.visible
