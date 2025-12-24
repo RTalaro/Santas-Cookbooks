@@ -1,5 +1,6 @@
 extends Control
 
+@onready var bgm = $BGM
 @onready var timer = $Timer
 @onready var animation_player = $AnimationPlayer
 @onready var counter = $GUI/Counter
@@ -30,9 +31,10 @@ func _ready():
 	
 	counter.text = "Find Santa's Cookbooks! %d/%d" % [cookbooks_held, max_cookbooks]
 	text.text = ""
+	bgm.play(4)
 	
 	# TO-DO: uncomment when game is done
-	#await run_dialogue("start")
+	await run_dialogue("start")
 	player.set_physics_process(true)
 	cookbook_collected.connect(on_cookbook_collected)
 	quest_complete.connect(end_game)
@@ -61,7 +63,7 @@ func run_dialogue(file_name: String):
 		text.visible_characters = 5
 		text.text = "Santa: " + line
 		while text.visible_characters < len(text.text):
-			timer.start(0.04)
+			timer.start(0.025)
 			await timer.timeout
 			text.visible_characters += 1
 		await proceed_text
@@ -105,4 +107,5 @@ func _process(_delta):
 	
 	camera.position.x = player.position.x
 	if player.global_position.y > 700:
-		jump_to_checkpoint()
+		#jump_to_checkpoint()
+		player.global_position = player.origin

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvhdghmjgt48e"
+path="res://.godot/imported/P.I. Tchaikovsky - Concerto No.1 in B flat minor Op.23 - II. Andantino.mp3-0577c3576c6ed1422932e5a8596dfbd5.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/P.I. Tchaikovsky - Concerto No.1 in B flat minor Op.23 - II. Andantino.mp3"
+dest_files=["res://.godot/imported/P.I. Tchaikovsky - Concerto No.1 in B flat minor Op.23 - II. Andantino.mp3-0577c3576c6ed1422932e5a8596dfbd5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

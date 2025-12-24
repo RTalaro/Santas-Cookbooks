@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnn6edjtht0cw"]
+[gd_scene load_steps=5 format=3 uid="uid://dnn6edjtht0cw"]
 
 [ext_resource type="Texture2D" uid="uid://cq7yxmgqt4q41" path="res://assets/sprites/dummy_asset.png" id="1_kh36y"]
 [ext_resource type="Script" uid="uid://cuh60a6g5ccy2" path="res://scripts/cookbook.gd" id="1_y0hms"]
+[ext_resource type="AudioStream" uid="uid://crgrr1m5t5p1t" path="res://assets/sound/collect.wav" id="3_q1bjt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0hms"]
 size = Vector2(4, 12.57967)
@@ -17,3 +18,8 @@ texture = ExtResource("1_kh36y")
 position = Vector2(0, 0.49999997)
 scale = Vector2(0.87492836, 0.23848003)
 shape = SubResource("RectangleShape2D_y0hms")
+
+[node name="CollectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q1bjt")
+volume_db = -4.0
+bus = &"SFX"
