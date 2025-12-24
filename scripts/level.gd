@@ -66,9 +66,9 @@ func run_dialogue(file_name: String):
 			text.visible_characters += 1
 		await proceed_text
 		line = dialogue.get_line()
-	text.text = ""
 	animation_player.play("santa_fade_out")
 	await animation_player.animation_finished
+	text.text = ""
 
 func get_nearest_checkpoint():
 	var checkpoints_reversed = all_checkpoints.duplicate()
