@@ -1089,6 +1089,7 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("2_vonw3")]
 position = Vector2(-324, 95)
 slide_on_ceiling = false
+metadata/_edit_lock_ = true
 
 [node name="PassThrough" type="TileMapLayer" parent="."]
 self_modulate = Color(0.38170326, 0.38170323, 0.38170323, 1)

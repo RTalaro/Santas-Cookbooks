@@ -23,6 +23,7 @@ signal cookbook_collected
 signal quest_complete
 
 func _ready():
+	santa.modulate = Color(1.0,1.0,1.0,0.0)
 	player.set_physics_process(false)
 	all_checkpoints = extract_children("Checkpoint")
 	max_checkpoints = len(all_checkpoints)
