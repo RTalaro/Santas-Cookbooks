@@ -26,9 +26,7 @@ signal cookbook_collected
 signal quest_complete
 
 func _ready():
-	credits.visible = false
 	credits.modulate.a = 0.0
-	santa.modulate.a = 0.0
 	player.set_physics_process(false)
 	all_checkpoints = extract_children("Checkpoint")
 	max_checkpoints = len(all_checkpoints)
@@ -44,6 +42,7 @@ func _ready():
 	cookbook_collected.connect(on_cookbook_collected)
 	quest_complete.connect(end_game)
 	timer.start(.5)
+	counter.visible = true
 	await timer.timeout
 	notif.visible = true
 
@@ -62,7 +61,6 @@ func extract_children(node_name: String):
 func run_dialogue(file_name: String):
 	var dialogue_path = "res://dialogue/%s.txt" % file_name
 	var dialogue = FileAccess.open(dialogue_path, FileAccess.READ)
-	print(dialogue)
 	
 	animation_player.play("santa_fade_in")
 	await animation_player.animation_finished
