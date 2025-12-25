@@ -7,12 +7,15 @@ extends Control
 @onready var quit = $Menu/Buttons/Quit
 @onready var volume = $Volume
 @onready var back = $Volume/Back
+@onready var credits_button = $Menu/Credits
+@onready var credits_overlay = $Credits
 
 func _ready():
 	play.connect("button_down", on_play_button_down)
 	options.connect("button_down", on_options_button_down)
 	back.connect("button_down", on_back_button_down)
 	quit.connect("button_down", on_quit_button_down)
+	credits_button.connect("button_down", on_credits_button_down)
 
 
 func on_play_button_down():
@@ -21,6 +24,10 @@ func on_play_button_down():
 func on_options_button_down():
 	menu.visible = false
 	volume.visible = true
+
+func on_credits_button_down():
+	menu.visible = false
+	credits_overlay.visible = true
 
 func on_back_button_down():
 	volume.visible = false
@@ -33,4 +40,6 @@ func on_quit_button_down():
 func _input(_event):
 	if Input.is_action_just_pressed("options"):
 		if menu.visible: on_options_button_down()
-		else: on_back_button_down()
+		else:
+			on_back_button_down()
+			credits_overlay.visible = false

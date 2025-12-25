@@ -7,11 +7,13 @@ extends Control
 @onready var textbox = $GUI/Textbox
 @onready var text = $GUI/Textbox/InnerRect/Text
 @onready var volume = $GUI/Volume
+@onready var credits = $GUI/Credits
 @onready var player = $Player
 @onready var santa = $Santa
 @onready var santa_sprite = $Santa/Sprite2D
 @onready var camera = $Camera2D
 @onready var window = $Window
+@onready var notif = $Notif
 
 @export var cookbooks_held: int = 0
 @export var max_checkpoints: int
@@ -24,7 +26,9 @@ signal cookbook_collected
 signal quest_complete
 
 func _ready():
-	santa.modulate = Color(1.0,1.0,1.0,0.0)
+	credits.visible = false
+	credits.modulate.a = 0.0
+	santa.modulate.a = 0.0
 	player.set_physics_process(false)
 	all_checkpoints = extract_children("Checkpoint")
 	max_checkpoints = len(all_checkpoints)
@@ -35,10 +39,13 @@ func _ready():
 	text.text = ""
 	bgm.play(4)
 	
-	#await run_dialogue("start")
+	await run_dialogue("start")
 	player.set_physics_process(true)
 	cookbook_collected.connect(on_cookbook_collected)
 	quest_complete.connect(end_game)
+	timer.start(.5)
+	await timer.timeout
+	notif.visible = true
 
 func extract_children(node_name: String):
 	var children: Array[Node] = get_children()
@@ -55,6 +62,7 @@ func extract_children(node_name: String):
 func run_dialogue(file_name: String):
 	var dialogue_path = "res://dialogue/%s.txt" % file_name
 	var dialogue = FileAccess.open(dialogue_path, FileAccess.READ)
+	print(dialogue)
 	
 	animation_player.play("santa_fade_in")
 	await animation_player.animation_finished
@@ -99,8 +107,11 @@ func on_cookbook_collected(book_num: int):
 func end_game():
 	player.set_physics_process(false)
 	await run_dialogue("end")
-	# TO-DO: run credits here
-	print("game complete!")
+	animation_player.play("player_leave")
+	await animation_player.animation_finished
+	credits.visible = true
+	animation_player.play("credits_fade_in")
+	await animation_player.animation_finished
 
 func _process(_delta):
 	if textbox.modulate == Color(1.0,1.0,1.0,1.0) and Input.is_action_just_pressed("proceed_text"):
@@ -113,3 +124,5 @@ func _process(_delta):
 func _input(_event):
 	if Input.is_action_just_pressed("options"):
 		volume.visible = !volume.visible
+		if volume.visible: player.set_physics_process(false)
+		else: player.set_physics_process(true)

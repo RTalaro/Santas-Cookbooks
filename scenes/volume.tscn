@@ -37,7 +37,7 @@ offset_right = -89.0
 offset_bottom = -137.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0028136265, 0.074851945, 0.105586156, 0.7882353)
+color = Color(0.003921569, 0.07450981, 0.105882354, 0.60784316)
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 1

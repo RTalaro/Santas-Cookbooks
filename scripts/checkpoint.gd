@@ -13,7 +13,6 @@ func on_body_entered(body: Node2D):
 		var parent = get_parent()
 		if parent:
 			reach_sfx.play()
-			print("checkpoint %d reached" % num)
 			reached = true
 			call_deferred("disconnect", "body_entered", on_body_entered)
 		else: print("no parent")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct8m6uch446pt"]
+[gd_scene load_steps=3 format=3 uid="uid://ct8m6uch446pt"]
 
 [ext_resource type="Script" uid="uid://dstxtuj385p3p" path="res://scripts/button.gd" id="1_0bpdh"]
+[ext_resource type="Script" uid="uid://cbsyxvgceyvht" path="res://scripts/credits.gd" id="1_2ckv8"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2ckv8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -16,9 +18,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 102.0
-offset_top = 148.0
+offset_top = 67.0
 offset_right = -102.0
-offset_bottom = -148.0
+offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0028136265, 0.074851945, 0.105586156, 0.7882353)
@@ -29,25 +31,185 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 89.0
-offset_top = 137.0
+offset_top = 53.0
 offset_right = -89.0
-offset_bottom = -137.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0028136265, 0.074851945, 0.105586156, 0.7882353)
+color = Color(0.003921569, 0.07450981, 0.105882354, 0.60784316)
 
-[node name="Back" type="Button" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 526.0
-offset_top = 82.5
-offset_right = -526.0
-offset_bottom = 113.5
+anchor_bottom = 1.0
+offset_top = -38.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[b] Programming [/b]
+Reece Talaro
+[b] Design [/b]
+Reece Talaro
+[b] Assets [/b]
+[url = {https://raou.itch.io/dark-dun}]Raou[/url]
+[url = {https://uma-alma.itch.io/dungeon-kingdoms-essentials}]Uma Alma[/url]
+[url = {https://cat-sopelka.itch.io/dungeon-brick-wall}]Cat_Sopelka[/url]
+Find them on itch.io!
+[b] Music [/b]
+Reece Talaro
+
+Made in [url = {https://godotengine.org/license/}]Godot 4.5.1[/url]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -210.5
+offset_right = 99.0
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Left" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Programming" type="VBoxContainer" parent="HBoxContainer/Left"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="HBoxContainer/Left/Programming"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Programming"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Details" type="Label" parent="HBoxContainer/Left/Programming"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Reece Talaro"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Design" type="VBoxContainer" parent="HBoxContainer/Left"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="HBoxContainer/Left/Design"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Design"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Details" type="Label" parent="HBoxContainer/Left/Design"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Reece Talaro"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Assets" type="VBoxContainer" parent="HBoxContainer/Left"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="HBoxContainer/Left/Assets"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Assets"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Details" type="Label" parent="HBoxContainer/Left/Assets"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Reece Talaro
+Raou
+Uma Alma
+Cat_Sopelka"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Find" type="RichTextLabel" parent="HBoxContainer/Left"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[i]Find them on itch.io![/i]"
+fit_content = true
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SFX" type="VBoxContainer" parent="HBoxContainer/Right"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="HBoxContainer/Right/SFX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SFX"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Details" type="Label" parent="HBoxContainer/Right/SFX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Creator Assets"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Music" type="VBoxContainer" parent="HBoxContainer/Right"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="HBoxContainer/Right/Music"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Music"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Details" type="RichTextLabel" parent="HBoxContainer/Right/Music"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[i]Concerto No.1 in B flat minor Op.23 - II. Andantino[/i]
+Composed by P.I. Tchaikovsky"
+fit_content = true
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Godot" type="Label" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Made in Godot 4.5.1"
+horizontal_alignment = 1
+
+[node name="Note" type="Label" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Merry Christmas, Thiago! :)"
+
+[node name="Blank" type="Label" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 2
+
+[node name="Back" type="Button" parent="HBoxContainer/Right"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Back"
 script = ExtResource("1_0bpdh")
